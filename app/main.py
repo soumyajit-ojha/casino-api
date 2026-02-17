@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-# from app.endpoints.routes import blackjack_routes, auth_routes, wallet_routes
+from app.endpoints.routes import auth_routes
 
 app = FastAPI(
     title="Production Blackjack Casino API",
@@ -9,6 +9,8 @@ app = FastAPI(
     docs_url="/api/docs",
     openapi_url="/api/openapi.json",
 )
+
+app.include_router(auth_routes.router)
 
 
 # Global Error Handler for consistent response format

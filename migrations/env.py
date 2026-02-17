@@ -14,6 +14,7 @@ from app.core.config import settings
 from app.db.session import Base
 
 # IMPORTANT: Import all models
+from app.models.user import User
 
 
 # Interpret the config file for Python logging.
