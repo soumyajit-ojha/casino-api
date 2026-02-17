@@ -12,4 +12,4 @@ class User(Base):
     wallet = relationship(
         "Wallet", back_populates="owner", uselist=False, cascade="all, delete-orphan"
     )
-    # games = relationship("BlackjackGame", back_populates="player")
+    games = relationship("BlackjackGame", back_populates="player")
