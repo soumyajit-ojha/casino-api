@@ -15,6 +15,7 @@ from app.db.session import Base
 
 # IMPORTANT: Import all models
 from app.models.user import User
+from app.models.wallet import Wallet
 
 
 # Interpret the config file for Python logging.
