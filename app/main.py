@@ -10,9 +10,9 @@ app = FastAPI(
     openapi_url="/api/openapi.json",
 )
 
-app.include_router(auth_routes.router)
-app.include_router(wallet_routes.router)
-app.include_router(blackjack_routes.router)
+app.include_router(auth_routes.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(wallet_routes.router, prefix="/api/wallet", tags=["Wallet"])
+app.include_router(blackjack_routes.router, prefix="/api/blackjack", tags=["Blackjack"])
 
 
 # Global Error Handler for consistent response format
