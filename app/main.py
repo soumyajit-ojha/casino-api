@@ -1,5 +1,4 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI
 
 from app.endpoints.routes import auth_routes, wallet_routes, blackjack_routes
 
@@ -13,19 +12,6 @@ app = FastAPI(
 app.include_router(auth_routes.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(wallet_routes.router, prefix="/api/wallet", tags=["Wallet"])
 app.include_router(blackjack_routes.router, prefix="/api/blackjack", tags=["Blackjack"])
-
-
-# Global Error Handler for consistent response format
-@app.exception_handler(Exception)
-async def global_exception_handler(request: Request, exc: Exception):
-    return JSONResponse(
-        status_code=500,
-        content={
-            "success": False,
-            "data": None,
-            "message": f"Internal Server Error: {str(exc)}",
-        },
-    )
 
 
 @app.get("/")
